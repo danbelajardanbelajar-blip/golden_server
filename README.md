@@ -1,32 +1,15 @@
-# React + TypeScript + Vite
+# books.quizb.my.id — maintenance
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Halaman pemberitahuan sementara bahwa perpustakaan sedang diperbarui. Pengembangan aplikasi berlanjut di https://github.com/danbelajardanbelajar-blip/maktabah.my.id.
 
-Currently, two official plugins are available:
+## Menjalankan
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+`npm start` atau entry point Passenger/cPanel `app.cjs`. Tidak ada dependensi tambahan atau database yang diperlukan. Server Node merespons halaman dan rute lama dengan HTTP 503, Retry-After, serta header pencegah cache. Rute API mengembalikan JSON maintenance dengan status 503.
 
-## React Compiler
+`npm run build` di komputer lokal menghasilkan salinan statis di `index.dev.html`, `dist/index.html`, dan `dist/index.dev.html`. Untuk hosting statis, gunakan `index.html`; status HTTP pada hosting statis mengikuti konfigurasi hosting.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Memperbarui hosting lama
 
-## Expanding the Oxlint configuration
+Setelah commit diambil oleh checkout hosting melalui `git pull --ff-only`, restart aplikasi Node melalui panel hosting. Tidak perlu instalasi paket atau build di hosting. Untuk hosting statis, arahkan document root ke folder yang memuat `index.html`.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Push GitHub memperbarui repository. Website aktif baru berubah setelah mekanisme deployment hosting mengambil commit tersebut. Tidak ada kredensial, database, atau pengaturan `.htaccess` hosting yang disertakan.
